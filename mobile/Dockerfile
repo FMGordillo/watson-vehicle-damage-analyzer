@@ -31,6 +31,9 @@ RUN sdkmanager --update \
     "build-tools;26.0.1" \
     "platforms;android-26"
 
+# FMG - AND accept licenses
+RUN yes | sdkmanager --licenses
+
 # Install Cordova, and opt out of telemetry reporting. If we don't opt-out now,
 # then the user will face an interactive prompt when building the image later.
 RUN npm install -g cordova \

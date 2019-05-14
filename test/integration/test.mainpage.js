@@ -16,27 +16,30 @@
 /* eslint no-undef: 0 */
 
 casper.options.waitTimeout = 10000;
-casper.test.begin('Watson Vehicle Damage Analyzer', 2, function suite(test) {
-  var baseHost = 'http://localhost:3000';
+casper.test.begin("Watson Vehicle Damage Analyzer", 2, function suite(test) {
+	var baseHost = "http://localhost:3000";
 
-  casper.start(baseHost, function () {
-    casper.test.comment('Starting Testing');
-    test.assertHttpStatus(200, 'Visual Recognition is ready!');
-    test.assertTitle('Watson Vehicle Damage Analyzer-Server', 'Title is correct');
-  });
+	casper.start(baseHost, function() {
+		casper.test.comment("Starting Testing");
+		test.assertHttpStatus(200, "Visual Recognition is ready!");
+		test.assertTitle(
+			"Watson Vehicle Damage Analyzer-Server",
+			"Title is correct"
+		);
+	});
 
-  casper.open(baseHost, {
-    data: {
-      method: 'POST',
-      data: '../../server/data/testFlatTire.jpg'
-    }
-  });
+	casper.open(baseHost, {
+		data: {
+			method: "POST",
+			data: "../../server/src/data/testFlatTire.jpg"
+		}
+	});
 
-  casper.then(function() {
-    this.echo('POSTED it.');
-  });
+	casper.then(function() {
+		this.echo("POSTED it.");
+	});
 
-  casper.run(function () {
-    test.done();
-  });
+	casper.run(function() {
+		test.done();
+	});
 });
